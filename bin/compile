@@ -77,7 +77,7 @@ cd $BUILD_DIR
 if ! [ -e $BUILD_DIR/www/bin/cpanm ]; then
   echo "-----> Bootstrapping cpanm"
 #  curl --silent https://raw.github.com/miyagawa/cpanminus/master/cpanm | perl - App::cpanminus 2>&1 | indent
-    apt-get install cpanminus
+    sudo apt-get install cpanminus
 fi
 
 echo "-----> Installing dependencies"
