@@ -63,6 +63,10 @@ EOF
 # install dependencies using cpanm (code taken from https://github.com/miyagawa/heroku-buildpack-perl)
 # "local" changed to "www" 
 
+indent() {
+  sed -u 's/^/       /'
+}
+
 export PERL_CPANM_OPT="--quiet --notest -l $BUILD_DIR/www"
 
 cd $BUILD_DIR
