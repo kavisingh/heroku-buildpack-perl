@@ -81,4 +81,4 @@ if ! [ -e $BUILD_DIR/www/bin/cpanm ]; then
 fi
 
 echo "-----> Installing dependencies"
-cpanm --installdeps . 2>&1 | indent
+cpanm --installdeps ./www 2>&1 | indent
