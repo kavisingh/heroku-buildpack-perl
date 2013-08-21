@@ -70,7 +70,7 @@ indent() {
 
 PATH="$BUILD_DIR/www/bin:$PATH"
 export PERL5LIB="$BUILD_DIR/www/lib/perl5"
-export PERL_CPANM_OPT="--quiet --notest -l $BUILD_DIR/www"
+export PERL_CPANM_OPT="--verbose --notest -l $BUILD_DIR/www"
 
 cd $BUILD_DIR
 
