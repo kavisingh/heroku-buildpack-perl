@@ -59,3 +59,20 @@ tail -F /app/${APACHE_PATH}/logs/access_log &
 echo "Launching apache"
 exec /app/${APACHE_PATH}/bin/httpd -DNO_DETACH
 EOF
+
+# install dependencies using cpanm (code taken from https://github.com/miyagawa/heroku-buildpack-perl)
+# "local" changed to "www" 
+
+export PERL_CPANM_OPT="--quiet --notest -l $BUILD_DIR/www"
+
+cd $BUILD_DIR
+
+if ! [ -e $BUILD_DIR/www/bin/cpanm ]; then
+  echo "-----> Bootstrapping cpanm"
+  curl --silent https://raw.github.com/miyagawa/cpanminus/master/cpanm | perl - App::cpanminus 2>&1 | indent
+fi
+
+echo "-----> Installing dependencies"
+cpanm --installdeps . 2>&1 | indent
+
+
